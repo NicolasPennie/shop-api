@@ -1,7 +1,7 @@
-class CreateProducts < ActiveRecord::Migration[5.2]
+class CreateOrders < ActiveRecord::Migration[5.2]
   def change
-    create_table :products do |t|
-      t.string :name
+    create_table :orders do |t|
+      t.text :comment
       t.float :price
       t.references :shop, foreign_key: true
 
