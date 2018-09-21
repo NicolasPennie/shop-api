@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2018_09_21_190220) do
 
   create_table "line_items", force: :cascade do |t|
     t.integer "count"
-    t.float "price"
+    t.float "cost"
     t.integer "order_id"
     t.integer "product_id"
     t.datetime "created_at", null: false
@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 2018_09_21_190220) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "name"
-    t.float "price"
+    t.text "comment"
+    t.float "cost"
     t.integer "shop_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
