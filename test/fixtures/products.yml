@@ -1,0 +1,9 @@
+bread:
+  name: Bread
+  price: 2.75
+  shop: shoppers
+
+apple:
+  name: Apple
+  price: 0.50
+  shop: shoppers

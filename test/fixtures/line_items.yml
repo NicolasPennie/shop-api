@@ -1,0 +1,9 @@
+bread:
+  count: 5
+  order: food
+  product: bread
+  
+apple:
+  count: 3
+  order: food
+  product: apple
