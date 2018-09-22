@@ -32,5 +32,5 @@ clothes.line_items.create!(product_id: shoes.id,
 												cost: shoes.price)
 clothes_sum = clothes.line_items.pluck(:cost).sum
 clothes.update_attribute(:cost, clothes_sum)
-			
+
 
