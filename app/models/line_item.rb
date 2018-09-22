@@ -2,6 +2,6 @@ class LineItem < ApplicationRecord
 	belongs_to :order
 	belongs_to :product
 	
-	validates :cost, presence: true
-	validates :count, presence: true
+	validates :count, numericality: { only_integer: true,
+																		greater_than: 0 }
 end
