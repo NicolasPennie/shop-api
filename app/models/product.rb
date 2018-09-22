@@ -4,7 +4,7 @@ class Product < ApplicationRecord
 	has_many :line_items
 	has_many :orders, through: :line_items
 	
-	validates :name, presence: true, length: { maximum: 50 }
+	validates :name, uniqueness: true, presence: true, length: { maximum: 50 }
 	validates :price, numericality: { greater_than_or_equal_to: 0 }
 	validate :price_must_be_dollar_amount
 	
