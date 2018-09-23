@@ -2,30 +2,30 @@ class ProductsController < ApplicationController
 	before_action :find_shop
 	before_action :find_product, only: [:show, :update, :destroy]
 	
-	# GET /products
+	# GET /shops/:id/products
 	def index
 		@products = @shop.products.all
 		json_response(@products)
 	end
 	
-	# POST /products
+	# POST /shops/:id/products
 	def create
 		@product = @shop.products.create!(product_params)
 		json_response(@product, :created)
 	end
 	
-	# GET /products/:id
+	# GET /shops/:id/products/:id
 	def show
 		json_response(@product)
 	end
 	
-	# PUT /products/:id
+	# PUT /shops/:id/products/:id
 	def update
 		@product.update!(product_params)
 		head :no_content
 	end
 	
-	# DELETE /products/:id
+	# DELETE /shops/:id/products/:id
 	def destroy
 		@product.destroy!
 		head :no_content
