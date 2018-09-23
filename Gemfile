@@ -44,6 +44,7 @@ group :test do
   gem 'minitest'
   gem 'minitest-reporters'
   gem 'faker'
+  gem 'rails-controller-testing', '1.0.2'
 end
 
 group :production do

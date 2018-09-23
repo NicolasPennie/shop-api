@@ -21,6 +21,13 @@ class ShopsControllerTest < ActionDispatch::IntegrationTest
   	assert_equal "Valid name", json["name"]
   end
   
+  test "failed post request should return error" do
+  	# shop does not exist
+  	post '/shops', params: { name: "" }
+  	assert_response :unprocessable_entity
+  	assert_match "Name can't be blank", @response.body
+  end
+  
   test "show should find a shop" do
   	get shop_path(@shop)
   	assert_response :success
@@ -28,9 +35,22 @@ class ShopsControllerTest < ActionDispatch::IntegrationTest
   	assert_equal @shop.name, json["name"]
   end
   
+  test "failed get request should return error" do
+  	# shop does not exist
+  	get '/shops/55'
+  	assert_response :not_found
+  	assert_match "Couldn't find", @response.body
+  end
+  
   test "update should update a shop" do
   	patch shop_path(@shop), params: { name: "New name" }
   	assert_response :success
+  end
+  
+  test "failed update request should return error" do
+  	patch shop_path(@shop), params: { name: "  "}
+  	assert_response :unprocessable_entity
+  	assert_match "Name can't be blank", @response.body
   end
   
   test "delete should delete a shop" do
