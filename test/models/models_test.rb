@@ -22,7 +22,9 @@ class ModelsTest < ActiveSupport::TestCase
   end
   
   test "destroy shop should delete associated products, orders, and line items" do
-    @shop.destroy
+    Shop.all.each do |shop|
+     shop.destroy
+    end
     assert Shop.count.zero?
     assert Product.count.zero?
     assert Order.count.zero?

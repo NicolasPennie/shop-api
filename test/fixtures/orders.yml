@@ -1,3 +1,7 @@
 food:
   comment: Food order
   shop: shoppers
+
+clothes:
+  comment: Clothes order
+  shop: macs

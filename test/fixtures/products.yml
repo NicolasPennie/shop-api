@@ -7,3 +7,8 @@ apple:
   name: Apple
   price: 0.50
   shop: shoppers
+
+pants:
+  name: pants
+  price: 10.0
+  shop: macs

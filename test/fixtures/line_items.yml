@@ -7,3 +7,8 @@ apple:
   count: 3
   order: food
   product: apple
+  
+pants:
+  count: 1
+  order: clothes
+  product: pants

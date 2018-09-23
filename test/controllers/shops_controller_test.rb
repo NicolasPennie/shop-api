@@ -22,7 +22,6 @@ class ShopsControllerTest < ActionDispatch::IntegrationTest
   end
   
   test "failed post request should return error" do
-  	# shop does not exist
   	post '/shops', params: { name: "" }
   	assert_response :unprocessable_entity
   	assert_match "Name can't be blank", @response.body

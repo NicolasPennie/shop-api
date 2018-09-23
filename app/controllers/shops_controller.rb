@@ -4,8 +4,8 @@ class ShopsController < ApplicationController
 	
 	# GET /shops
 	def index
-		@shop = Shop.all
-		json_response(@shop)
+		@shops = Shop.all
+		json_response(@shops)
 	end
 	
 	# POST /shops
