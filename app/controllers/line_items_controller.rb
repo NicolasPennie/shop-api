@@ -1,7 +1,7 @@
 class LineItemsController < ApplicationController
 	before_action :find_data
 	before_action :find_line_item, only: [:show, :update, :destroy]
-	after_action :compute_order_cost, only: [:create, :update, :destroy]
+	after_action :compute_order_cost, only: [:create, :update]
 	
 	# GET /shops/:id/orders/:id/line_items
 	def index
@@ -55,7 +55,6 @@ class LineItemsController < ApplicationController
 		end
 		
 		def compute_order_cost
-			# puts @order.line_items.pluck(:cost)
 			order_sum = @order.line_items.pluck(:cost).sum
 			@order.update_attribute(:cost, order_sum)
 		end

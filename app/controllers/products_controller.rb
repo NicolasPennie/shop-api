@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
 	before_action :find_shop
 	before_action :find_product, only: [:show, :update, :destroy]
+	after_action :update_line_items, only: [:update]
 	
 	# GET /shops/:id/products
 	def index
@@ -43,5 +44,16 @@ class ProductsController < ApplicationController
 		
 		def find_product
 			@product = @shop.products.find(params[:id])
+		end
+		
+		def update_line_items
+			@product.orders.all.each do |order|
+				order.line_items.where(product_id: @product.id).each do |line_item|
+					line_item.cost = @product.price * line_item.count
+					line_item.save
+				end
+				order.cost = order.reload.line_items.pluck(:cost).sum
+				order.save
+			end
 		end
 end

@@ -12,3 +12,8 @@ pants:
   name: pants
   price: 10.0
   shop: macs
+  
+bag:
+  name: bag
+  price: 0.0
+  shop: shoppers

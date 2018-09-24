@@ -16,10 +16,6 @@ class ProductsTest < ActiveSupport::TestCase
 		assert_not Product.new().valid?
     assert_not Product.new(shop_id: 99).valid?
 	end
-	
-	test "name should be unique" do
-	  assert_not @shop.products.new(name: "Bread", price: 5).valid?
-	end
 
   test "product name should exists" do
     assert_not @shop.products.new().valid?

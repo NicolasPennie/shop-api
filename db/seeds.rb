@@ -7,6 +7,7 @@ apple = shoppers.products.create!(name: "Apple", price: 0.75)
 eggs = shoppers.products.create!(name: "Eggs", price: 1.99)
 pants = shoppers.products.create!(name: "Pants", price: 49.50)
 shoes = shoppers.products.create!(name: "Shoes", price: 35.00)
+bag = shoppers.products.create!(name: "Bag", price: 1.00)
 
 # Food Order
 food = shoppers.orders.create!(comment: "Food order")
@@ -19,6 +20,9 @@ food.line_items.create!(product_id: apple.id,
 food.line_items.create!(product_id: eggs.id, 
 												count: 2, 
 												cost: (2 * eggs.price))
+food.line_items.create!(product_id: bag.id, 
+												count: 1, 
+												cost: bag.price)
 food_sum = food.line_items.pluck(:cost).sum
 food.update_attribute(:cost, food_sum)
 
@@ -30,6 +34,9 @@ clothes.line_items.create!(product_id: pants.id,
 clothes.line_items.create!(product_id: shoes.id, 
 												count: 1, 
 												cost: shoes.price)
+clothes.line_items.create!(product_id: bag.id, 
+												count: 1, 
+												cost: bag.price)
 clothes_sum = clothes.line_items.pluck(:cost).sum
 clothes.update_attribute(:cost, clothes_sum)
 

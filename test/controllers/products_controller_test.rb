@@ -4,6 +4,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   def setup
   	@shop = shops(:shoppers)
   	@bread = products(:bread)
+  	@item = line_items(:bread)
   end
   
   test "index should list products from only the right shop" do
@@ -48,6 +49,15 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   	patch shop_product_path(@shop, @bread), params: { price: 7.7 }
   	assert_response :success
   	assert_equal 7.7, @bread.reload.price
+  end
+  
+  test "updating price should update line items and orders" do
+    assert_difference '@item.reload.cost', @item.count do
+     assert_difference '@item.reload.order.cost', @item.count do  
+        patch shop_product_path(@shop, @bread), params: { price: 2.0 }
+      end
+    end
+    assert_response :success
   end
   
   test "failed update request should return error" do
