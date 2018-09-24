@@ -4,6 +4,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   def setup
   	@shop = shops(:shoppers)
   	@bread = products(:bread)
+  	@food = orders(:food)
   	@item = line_items(:bread)
   end
   
@@ -66,9 +67,13 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   	assert_match "Price is not a number", @response.body
   end
   
-  test "delete should delete a product" do
+  test "delete should delete a product, line items, and update order cost" do
   	assert_difference 'Product.count', -1 do
-  		delete shop_product_path(@shop, @bread)
+  	  assert_difference 'LineItem.count', -1 do
+  	    assert_difference '@food.reload.cost', -@item.cost do
+  		    delete shop_product_path(@shop, @bread)
+  		  end
+  		end
   	end
   	assert_response :success
   end
