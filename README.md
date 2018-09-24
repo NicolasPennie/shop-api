@@ -3,7 +3,7 @@
 
 ShopAPI is a server-side API that models a simple shop. With ShopAPI you can create a shop, add products, and make orders. 
 
-Try ShopAPI for yourself at https://shop-api-nickpennie.herokuapp.com/!
+Try ShopAPI for yourself at https://shop-api-nickpennie.herokuapp.com/
 
 ### How to use
 
