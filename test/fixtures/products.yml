@@ -1,11 +1,11 @@
 bread:
   name: Bread
-  price: 2.75
+  price: 1.0
   shop: shoppers
 
 apple:
   name: Apple
-  price: 0.50
+  price: 2.0
   shop: shoppers
 
 pants:

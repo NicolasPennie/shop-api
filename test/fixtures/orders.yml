@@ -1,7 +1,9 @@
 food:
   comment: Food order
   shop: shoppers
+  cost: 11.0
 
 clothes:
   comment: Clothes order
   shop: macs
+  cost: 10.0

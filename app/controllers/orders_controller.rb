@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
 	
 	# POST /shops/:id/orders
 	def create
-		@order = @shop.orders.create!(order_params, cost: 0)
+		@order = @shop.orders.create!(order_params.merge({cost: 0}))
 		json_response(@order, :created)
 	end
 	

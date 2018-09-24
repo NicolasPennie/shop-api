@@ -47,6 +47,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   test "update should update a product" do
   	patch shop_product_path(@shop, @bread), params: { price: 7.7 }
   	assert_response :success
+  	assert_equal 7.7, @bread.reload.price
   end
   
   test "failed update request should return error" do

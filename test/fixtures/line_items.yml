@@ -2,13 +2,16 @@ bread:
   count: 5
   order: food
   product: bread
+  cost: 5
   
 apple:
   count: 3
   order: food
   product: apple
+  cost: 6
   
 pants:
   count: 1
   order: clothes
   product: pants
+  cost: 10
